@@ -13,17 +13,14 @@ const Car = () => {
   const [model, setModel] = useState();
 
   useEffect(() => {
-    // const loadModel = async () => {
+    loadModel();
+  }, []);
+
+  const loadModel = () => {
     new GLTFLoader().load('./scene.gltf', setModel);
-    // };
-
-    // loadModel();
-  });
-
-  console.log(model);
+  };
 
   return model ? <primitive object={model.scene} /> : null;
-  // return null;
 };
 
 const Controls = () => {
@@ -116,7 +113,7 @@ function App() {
       <fog attach='fog' args={['white', 5, 15]} />
       <Controls />
       {/* <Plane /> */}
-      <Box />
+      {/* <Box /> */}
       <Car />
     </Canvas>
   );
